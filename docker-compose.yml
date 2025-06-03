@@ -21,8 +21,8 @@ services:
       - no-new-privileges:true
     cap_drop:
       - ALL
-    environment:
-      - SERVICE_FQDN_APPWRITE_8080
+    expose:
+      - "8080"
 
   nitter-redis:
     image: redis:6-alpine
