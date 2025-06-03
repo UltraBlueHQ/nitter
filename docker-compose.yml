@@ -22,7 +22,7 @@ services:
     cap_drop:
       - ALL
     expose:
-      - "8080"
+      - "80"
 
   nitter-redis:
     image: redis:6-alpine
