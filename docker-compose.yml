@@ -21,13 +21,8 @@ services:
       - no-new-privileges:true
     cap_drop:
       - ALL
-    expose:
-      - "8080"
-    environment:
-      - SERVICE_FQDN_NITTER_8080
-    labels:
-      - traefik.enable=true
-      - traefik.http.services.nitter.loadbalancer.server.port=8080
+    ports:
+      - "9998:8080"
 
   nitter-redis:
     image: redis:6-alpine
