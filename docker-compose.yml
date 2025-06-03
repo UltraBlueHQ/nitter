@@ -27,8 +27,6 @@ services:
       - SERVICE_FQDN_NITTER_8080
     labels:
       - traefik.enable=true
-      - traefik.http.routers.nitter.rule=Host(`kkwo8gokwkg0sckog8gw4sow.144.217.253.180.sslip.io`)
-      - traefik.http.routers.nitter.entrypoints=web
       - traefik.http.services.nitter.loadbalancer.server.port=8080
 
   nitter-redis:
