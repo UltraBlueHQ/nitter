@@ -303,3 +303,11 @@ proc toJson*(user: User): JsonNode =
     "pinnedTweet": user.pinnedTweet,
     "following": user.following,
     "followers": user.followers,
+    "tweets": user.tweets,
+    "likes": user.likes,
+    "media": user.media,
+    "verifiedType": $user.verifiedType,
+    "protected": user.protected,
+    "suspended": user.suspended,
+    "joinDate": user.joinDate.format("yyyy-MM-dd HH:mm:ss")
+  }
