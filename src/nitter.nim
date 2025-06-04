@@ -55,6 +55,8 @@ createEmbedRouter(cfg)
 createRssRouter(cfg)
 createDebugRouter(cfg)
 
+createUserApiRouter()
+
 settings:
   port = Port(cfg.port)
   staticDir = cfg.staticDir
