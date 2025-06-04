@@ -2,7 +2,8 @@ version: "3"
 
 services:
   nitter:
-    image: zedeus/nitter:latest
+    build:
+      dockerfile: ./Dockerfile
     container_name: nitter
     volumes:
       - ./nitter.conf:/src/nitter.conf:Z,ro
