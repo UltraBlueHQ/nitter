@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 import strutils, strformat
 import karax/[karaxdsl, vdom, vstyles]
+import jsony
 
 import renderutils, search
 import ".."/[types, utils, formatters]
@@ -14,6 +15,8 @@ proc renderStat(num: int; class: string; text=""): VNode =
 
 proc renderUserCard*(user: User; prefs: Prefs): VNode =
   buildHtml(tdiv(class="profile-card")):
+    text user.toJson()
+
     tdiv(class="profile-card-info"):
       let
         url = getPicUrl(user.getUserPic())
