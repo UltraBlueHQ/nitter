@@ -289,25 +289,3 @@ proc contains*(thread: Chain; tweet: Tweet): bool =
 
 proc add*(timeline: var seq[Tweets]; tweet: Tweet) =
   timeline.add @[tweet]
-
-proc toJson*(user: User): JsonNode =
-  result = %*{
-    "id": user.id,
-    "username": user.username,
-    "fullname": user.fullname,
-    "location": user.location,
-    "website": user.website,
-    "bio": user.bio,
-    "userPic": user.userPic,
-    "banner": user.banner,
-    "pinnedTweet": user.pinnedTweet,
-    "following": user.following,
-    "followers": user.followers,
-    "tweets": user.tweets,
-    "likes": user.likes,
-    "media": user.media,
-    "verifiedType": $user.verifiedType,
-    "protected": user.protected,
-    "suspended": user.suspended,
-    "joinDate": user.joinDate.format("yyyy-MM-dd HH:mm:ss")
-  }

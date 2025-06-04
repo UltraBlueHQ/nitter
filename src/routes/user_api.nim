@@ -7,11 +7,11 @@ proc createUserApiRouter*() =
   router userApi:
     get "/api/@username":
       let username = @"username"
-      let user = await getGraphUser(username)
+      let user = await getGraphUserRaw(username)
       
       if user.username.len == 0:
         resp Http404, "User not found"
       elif user.suspended:
         resp Http403, "User suspended"
       else:
-        resp Http200, $user.toJson, {"Content-Type": "application/json"}
+        resp Http200, user, {"Content-Type": "application/json"}
