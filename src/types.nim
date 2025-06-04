@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-import times, sequtils, options, tables,json
+import times, sequtils, options, tables
 import prefs_impl
 
 genPrefsType()
