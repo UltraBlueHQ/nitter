@@ -12,7 +12,7 @@ proc getGraphUser*(username: string): Future[User] {.async.} =
     js = await fetchRaw(graphUser ? params, Api.userScreenName)
   result = parseGraphUser(js)
 
-proc getGraphUserRaw*(username: string): Future[User] {.async.} =
+proc getGraphUserRaw*(username: string): Future[JsonNode] {.async.} =
   if username.len == 0: return
   let
     variables = """{"screen_name": "$1"}""" % username
