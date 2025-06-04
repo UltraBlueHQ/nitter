@@ -1,7 +1,6 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 import asyncdispatch, jester, json, options
 import router_utils
-import jsony
 import ".."/[api, types, utils]
 
 proc createUserApiRouter*() =
@@ -15,4 +14,4 @@ proc createUserApiRouter*() =
       elif user.suspended:
         resp Http403, "User suspended"
       else:
-        resp Http200, user.toJson(), {"Content-Type": "application/json"}
+        resp Http200, $user.toJson, {"Content-Type": "application/json"}
