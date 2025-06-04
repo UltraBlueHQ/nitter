@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 import asyncdispatch, jester, json, options
-
+import router_utils
 import ".."/[api, types, utils]
 
 proc createUserApiRouter*() =
