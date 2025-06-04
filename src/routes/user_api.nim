@@ -14,4 +14,4 @@ proc createUserApiRouter*() =
       elif user.suspended:
         resp Http403, "User suspended"
       else:
-        resp Http200, $user.toJson
+        resp $user.toJson
