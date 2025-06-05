@@ -32,7 +32,7 @@ proc renderUserCard*(user: User; prefs: Prefs): VNode =
       span(id="x-user-data-info-id"): text ($user.verifiedType).toLowerAscii()
       span(id="x-user-data-info-id"): text $user.protected
       span(id="x-user-data-info-id"): text $user.suspended
-      span(id="x-user-data-info-id"): text $user.joinDate.toUnix()
+      span(id="x-user-data-info-id"): text $user.joinDate.toTime().toUnix()
 
     tdiv(class="profile-card-info"):
       let
