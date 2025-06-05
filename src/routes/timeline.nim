@@ -83,21 +83,22 @@ proc showTimeline*(request: Request; query: Query; cfg: Config; prefs: Prefs;
   result = renderMain(pHtml, request, cfg, prefs, pageTitle(u), pageDesc(u),
                       rss=rss, images = @[u.getUserPic("_400x400")],
                       banner=u.banner)
-
+  
 template respTimeline*(timeline: typed) =
   let t = timeline
   if t.len == 0:
     resp Http404, showError("User \"" & @"name" & "\" not found", cfg)
   resp t
 
-template respUserId*() =
+template respUserId*(request: Request) =
   cond @"user_id".len > 0
   let username = await getCachedUsername(@"user_id")
   if username.len > 0:
-    # Get raw query string from request and preserve it in redirect
-    let queryStr = request.query
-    let redirectUrl = if queryStr.len > 0: "/" & username & "?" & queryStr
-                     else: "/" & username
+    # Get query string from path(request) and preserve it in redirect
+    let pathStr = path(request)
+    let pathParts = pathStr.split('?', 1)
+    let queryStr = if pathParts.len > 1: "?" & pathParts[1] else: ""
+    let redirectUrl = "/" & username & queryStr
     redirect(redirectUrl)
   else:
     resp Http404, showError("User not found", cfg)
@@ -105,10 +106,10 @@ template respUserId*() =
 proc createTimelineRouter*(cfg: Config) =
   router timeline:
     get "/i/user/@user_id":
-      respUserId()
+      respUserId(request)
 
     get "/intent/user":
-      respUserId()
+      respUserId(request)
 
     get "/@name/?@tab?/?":
       cond '.' notin @"name"
