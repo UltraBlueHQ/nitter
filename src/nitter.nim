@@ -113,4 +113,3 @@ routes:
   extend embed, ""
   extend debug, ""
   extend unsupported, ""
-  extend userApi, ""
