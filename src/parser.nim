@@ -10,8 +10,6 @@ proc parseUser(js: JsonNode; id=""): User =
   if js.isNull: return
   result = User(
     id: if id.len > 0: id else: js{"id_str"}.getStr,
-    url: js{"url"}.getStr,
-    canDm: js{"can_dm"}.getBool,
     username: js{"screen_name"}.getStr,
     fullname: js{"name"}.getStr,
     location: js{"location"}.getStr,

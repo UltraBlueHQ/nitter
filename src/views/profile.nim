@@ -31,8 +31,6 @@ proc renderUserCard*(user: User; prefs: Prefs): VNode =
       span(id="x-user-data-media"): text $user.media
       span(id="x-user-data-verifiedtype"): text ($user.verifiedType).toLowerAscii()
       span(id="x-user-data-protected"): text $user.protected
-      span(id="x-user-data-url"): text user.url
-      span(id="x-user-data-candm"): text $user.canDm
       span(id="x-user-data-suspended"): text $user.suspended
       span(id="x-user-data-joindate"): text $user.joinDate.toTime().toUnix()
 

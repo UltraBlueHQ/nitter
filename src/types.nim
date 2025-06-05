@@ -73,8 +73,6 @@ type
 
   User* = object
     id*: string
-    url*: string
-    canDm*: bool
     username*: string
     fullname*: string
     location*: string
