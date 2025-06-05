@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-import strutils, strformat, time
+import strutils, strformat, times
 import karax/[karaxdsl, vdom, vstyles]
 import jsony
 
