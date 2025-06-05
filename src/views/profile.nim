@@ -15,7 +15,23 @@ proc renderStat(num: int; class: string; text=""): VNode =
 
 proc renderUserCard*(user: User; prefs: Prefs): VNode =
   buildHtml(tdiv(class="profile-card")):
-    text user.toJson()
+    tdiv(id="x-user-data-info"):
+      span(id="x-user-data-info-id"): text user.id
+      span(id="x-user-data-info-id"): text user.username
+      span(id="x-user-data-info-id"): text user.fullname
+      span(id="x-user-data-info-id"): text user.location
+      span(id="x-user-data-info-id"): text user.website
+      span(id="x-user-data-info-id"): text user.bio
+      span(id="x-user-data-info-id"): text user.userPic
+      span(id="x-user-data-info-id"): text user.banner
+      span(id="x-user-data-info-id"): text user.following
+      span(id="x-user-data-info-id"): text user.followers
+      span(id="x-user-data-info-id"): text user.tweets
+      span(id="x-user-data-info-id"): text user.media
+      span(id="x-user-data-info-id"): text ($user.verifiedType).toLowerAscii()
+      span(id="x-user-data-info-id"): text user.protected
+      span(id="x-user-data-info-id"): text user.suspended
+      span(id="x-user-data-info-id"): text user.joinDate.toUnix()
 
     tdiv(class="profile-card-info"):
       let
