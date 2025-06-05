@@ -94,10 +94,14 @@ template respUserId*() =
   cond @"user_id".len > 0
   let username = await getCachedUsername(@"user_id")
   if username.len > 0:
-    redirect("/" & username)
+    # Get raw query string from request and preserve it in redirect
+    let queryStr = request.query
+    let redirectUrl = if queryStr.len > 0: "/" & username & "?" & queryStr
+                     else: "/" & username
+    redirect(redirectUrl)
   else:
     resp Http404, showError("User not found", cfg)
-
+  
 proc createTimelineRouter*(cfg: Config) =
   router timeline:
     get "/i/user/@user_id":
