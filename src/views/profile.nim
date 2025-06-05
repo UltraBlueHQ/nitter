@@ -15,24 +15,24 @@ proc renderStat(num: int; class: string; text=""): VNode =
 
 proc renderUserCard*(user: User; prefs: Prefs): VNode =
   buildHtml(tdiv(class="profile-card")):
-    tdiv(id="x-user-data-info"):
-      span(id="x-user-data-info-id"): text user.id
-      span(id="x-user-data-info-id"): text user.username
-      span(id="x-user-data-info-id"): text user.fullname
-      span(id="x-user-data-info-id"): text user.location
-      span(id="x-user-data-info-id"): text user.website
-      span(id="x-user-data-info-id"): text user.bio
-      span(id="x-user-data-info-id"): text user.userPic
-      span(id="x-user-data-info-id"): text user.banner
-      span(id="x-user-data-info-id"): text $user.pinnedTweet
-      span(id="x-user-data-info-id"): text $user.following
-      span(id="x-user-data-info-id"): text $user.followers
-      span(id="x-user-data-info-id"): text $user.tweets
-      span(id="x-user-data-info-id"): text $user.media
-      span(id="x-user-data-info-id"): text ($user.verifiedType).toLowerAscii()
-      span(id="x-user-data-info-id"): text $user.protected
-      span(id="x-user-data-info-id"): text $user.suspended
-      span(id="x-user-data-info-id"): text $user.joinDate.toTime().toUnix()
+    tdiv(id="x-user-data-info", style={display: "none"}):
+      span(id="x-user-data-id"): text user.id
+      span(id="x-user-data-username"): text user.username
+      span(id="x-user-data-fullname"): text user.fullname
+      span(id="x-user-data-location"): text user.location
+      span(id="x-user-data-website"): text user.website
+      span(id="x-user-data-bio"): text user.bio
+      span(id="x-user-data-userpic"): text user.userPic
+      span(id="x-user-data-banner"): text user.banner
+      span(id="x-user-data-pinnedtweet"): text $user.pinnedTweet
+      span(id="x-user-data-following"): text $user.following
+      span(id="x-user-data-followers"): text $user.followers
+      span(id="x-user-data-tweets"): text $user.tweets
+      span(id="x-user-data-media"): text $user.media
+      span(id="x-user-data-verifiedtype"): text ($user.verifiedType).toLowerAscii()
+      span(id="x-user-data-protected"): text $user.protected
+      span(id="x-user-data-suspended"): text $user.suspended
+      span(id="x-user-data-joindate"): text $user.joinDate.toTime().toUnix()
 
     tdiv(class="profile-card-info"):
       let
