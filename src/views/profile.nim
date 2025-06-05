@@ -24,14 +24,15 @@ proc renderUserCard*(user: User; prefs: Prefs): VNode =
       span(id="x-user-data-info-id"): text user.bio
       span(id="x-user-data-info-id"): text user.userPic
       span(id="x-user-data-info-id"): text user.banner
-      span(id="x-user-data-info-id"): text user.following
-      span(id="x-user-data-info-id"): text user.followers
-      span(id="x-user-data-info-id"): text user.tweets
-      span(id="x-user-data-info-id"): text user.media
+      span(id="x-user-data-info-id"): text $user.pinnedTweet
+      span(id="x-user-data-info-id"): text $user.following
+      span(id="x-user-data-info-id"): text $user.followers
+      span(id="x-user-data-info-id"): text $user.tweets
+      span(id="x-user-data-info-id"): text $user.media
       span(id="x-user-data-info-id"): text ($user.verifiedType).toLowerAscii()
-      span(id="x-user-data-info-id"): text user.protected
-      span(id="x-user-data-info-id"): text user.suspended
-      span(id="x-user-data-info-id"): text user.joinDate.toUnix()
+      span(id="x-user-data-info-id"): text $user.protected
+      span(id="x-user-data-info-id"): text $user.suspended
+      span(id="x-user-data-info-id"): text $user.joinDate.toUnix()
 
     tdiv(class="profile-card-info"):
       let
