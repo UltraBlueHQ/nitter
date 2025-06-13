@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 import strutils, sequtils, strformat, options, algorithm
 import karax/[karaxdsl, vdom, vstyles]
+import jsony
 from jester import Request
 
 import renderutils
@@ -20,6 +21,9 @@ proc renderHeader(tweet: Tweet; retweet: string; pinned: bool; prefs: Prefs): VN
     elif retweet.len > 0:
       tdiv(class="retweet-header"):
         span: icon "retweet", retweet & " retweeted"
+    
+    tdiv()
+      text tweet.toJson()
 
     tdiv(class="tweet-header"):
       a(class="tweet-avatar", href=("/" & tweet.user.username)):
