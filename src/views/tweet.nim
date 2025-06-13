@@ -22,7 +22,7 @@ proc renderHeader(tweet: Tweet; retweet: string; pinned: bool; prefs: Prefs): VN
       tdiv(class="retweet-header"):
         span: icon "retweet", retweet & " retweeted"
     
-    tdiv()
+    tdiv():
       text tweet.toJson()
 
     tdiv(class="tweet-header"):
