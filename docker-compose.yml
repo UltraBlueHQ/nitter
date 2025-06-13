@@ -22,8 +22,6 @@ services:
       - no-new-privileges:true
     cap_drop:
       - ALL
-    ports:
-      - "9998:8080"
     labels:
       - "traefik.http.routers.http-0-hw08440koc4ckww0ccwggs40-nitter.middlewares=gzip,mybasicauth"
       - "traefik.http.middlewares.mybasicauth.basicauth.users=test:$2y$12$ci.4U63YX83CwkyUrjqxAucnmi2xXOIlEF6T/KdP9824f1Rf1iyNG"
