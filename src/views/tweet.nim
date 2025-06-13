@@ -7,8 +7,21 @@ from jester import Request
 import renderutils
 import ".."/[types, utils, formatters]
 import general
+import times
 
 const doctype = "<!DOCTYPE html>\n"
+
+proc dumpHook*(s: var string, v: DateTime) =
+  # Serialize DateTime as ISO string
+  s.add '"'
+  s.add v.format("yyyy-MM-dd'T'HH:mm:ss'Z'")
+  s.add '"'
+
+proc parseHook*(s: string, i: var int, v: var DateTime) =
+  # Parse DateTime from ISO string
+  var str: string
+  parseHook(s, i, str)
+  v = parse(str, "yyyy-MM-dd'T'HH:mm:ss'Z'")
 
 proc renderMiniAvatar(user: User; prefs: Prefs): VNode =
   genImg(user.getUserPic("_mini"), class=(prefs.getAvatarClass & " mini"))
