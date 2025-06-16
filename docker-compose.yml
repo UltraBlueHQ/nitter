@@ -2,6 +2,8 @@ version: "3"
 
 services:
   nitter:
+    environment:
+      - SERVICE_FQDN_NITTER_8080
     build:
       dockerfile: ./Dockerfile
     container_name: nitter
@@ -25,7 +27,6 @@ services:
     labels:
       - "traefik.http.routers.http-0-hw08440koc4ckww0ccwggs40-nitter.middlewares=gzip,mybasicauth"
       - "traefik.http.middlewares.mybasicauth.basicauth.users=test:$2y$12$ci.4U63YX83CwkyUrjqxAucnmi2xXOIlEF6T/KdP9824f1Rf1iyNG"
-      - "caddy_0.handle_path.0_reverse_proxy={{upstreams 8080}}"
 
   nitter-redis:
     image: redis:6-alpine
