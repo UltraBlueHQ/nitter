@@ -35,7 +35,7 @@ proc renderHeader(tweet: Tweet; retweet: string; pinned: bool; prefs: Prefs): VN
       tdiv(class="retweet-header"):
         span: icon "retweet", retweet & " retweeted"
     
-    tdiv(id="x-tweet-data-info", style={display: "none"}):
+    tdiv(data-name="x-tweet-data-info", style={display: "none"}):
       text tweet.toJson()
 
     tdiv(class="tweet-header"):
