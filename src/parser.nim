@@ -216,6 +216,7 @@ proc parseTweet(js: JsonNode; jsCard: JsonNode = newJNull()): Tweet =
       retweets: js{"retweet_count"}.getInt,
       likes: js{"favorite_count"}.getInt,
       quotes: js{"quote_count"}.getInt
+      bookmarks: js{"bookmark_count"}.getInt
     )
   )
 
@@ -322,6 +323,7 @@ proc parseGraphTweet(js: JsonNode; isLegacy=false): Tweet =
   result = parseTweet(js{"legacy"}, jsCard)
   result.id = js{"rest_id"}.getId
   result.user = parseGraphUser(js{"core"})
+  result.stats.views = js{"views", "count"}.getInt(0)
 
   with noteTweet, js{"note_tweet", "note_tweet_results", "result"}:
     result.expandNoteTweetEntities(noteTweet)
